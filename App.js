@@ -8,18 +8,21 @@ import {
   TextInput,
  } from 'react-native';
 
-export default class App extends React.Component { render() {
-return (
-<View style={styles.container}>
-    <Text style={[styles.largeText, styles.textStyle]}>Vancouver</Text>
-    <Text style={[styles.smallText, styles.textStyle]}>Sunny</Text>
-    <Text style={[styles.largeText, styles.textStyle]}>4°</Text>
+import SearchInput from './components/SearchInput';
 
-    <TextInput
-      autoCorrect={false}
-      placeholder="Search any city" placeholderTextColor="white" style={styles.textInput} clearButtonMode="always"/>
-</View> );
-} }
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <KeyboardAvoidingView style={styles.container} behavior="padding">
+        <Text style={[styles.largeText, styles.textStyle]}>Vancouver</Text>
+        <Text style={[styles.smallText, styles.textStyle]}>Sunny</Text>
+        <Text style={[styles.largeText, styles.textStyle]}>4°</Text>
+
+        <SearchInput placeholder="Search any city" />
+      </KeyboardAvoidingView> );
+  }
+}
 
 
 const styles = StyleSheet.create({ container: {
