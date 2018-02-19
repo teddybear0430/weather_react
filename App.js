@@ -14,8 +14,26 @@ import SearchInput from './components/SearchInput';
 
 
 export default class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      location: '',
+    };
+  }
+
+  componentDidMount() {
+    this.handleUpdateLocation('Vancouver');
+  }
+
+  handleUpdateLocation = city => {
+    this.setState({
+        location: city,
+    });
+  };
+
   render() {
-    const location = 'Vancouver';
+    const { location } = this.state;
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -30,7 +48,7 @@ export default class App extends React.Component {
             <Text style={[styles.smallText, styles.textStyle]}>Sunny</Text>
             <Text style={[styles.largeText, styles.textStyle]}>4°</Text>
 
-            <SearchInput placeholder="Search any city" />
+            <SearchInput placeholder="Search any city" onSubmit={this.handleUpdateLocation}/>
           </View>
         </ImageBackground>
       </KeyboardAvoidingView>
